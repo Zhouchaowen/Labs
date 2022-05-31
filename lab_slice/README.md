@@ -1,0 +1,17 @@
+# Slice 相关实验
+
+- ch_1 slice 切片被修改影响底层数据
+- ch_2 基础类型存储字节占用大小
+- ch_3 引用类型存储字节占用大小
+- ch_4 内存对齐对性能影响
+
+# 产考
+https://colobu.com/2019/01/24/cacheline-affects-performance-in-go/ 
+
+https://geektutu.com/post/hpg-struct-alignment.html
+
+https://int64.ink/blog/golang_%E7%90%86%E8%A7%A3golang%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/
+
+https://blog.huoding.com/2021/09/29/951
+
+https://xie.infoq.cn/article/594a7f54c639accb53796cfc7
