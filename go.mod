@@ -3,6 +3,7 @@ module Labs
 go 1.16
 
 require (
+	github.com/allegro/bigcache/v3 v3.0.2
 	github.com/envoyproxy/protoc-gen-validate v0.6.7
 	github.com/golang/protobuf v1.5.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
