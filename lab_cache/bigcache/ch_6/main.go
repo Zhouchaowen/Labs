@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// 测试待状态的删除回调 OnRemoveWithReason
 func main() {
 	onRemoveExt := func(key string, entry []byte, reason bigcache.RemoveReason) {
 		fmt.Printf("key:%s,vaule:%s removed. reason：%d\n", key, entry, reason)

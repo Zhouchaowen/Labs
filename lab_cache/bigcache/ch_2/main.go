@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// 测试hash冲突 Append
 func main() {
 	cache, _ := bigcache.NewBigCache(bigcache.DefaultConfig(10 * time.Minute))
 

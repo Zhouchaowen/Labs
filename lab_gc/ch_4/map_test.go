@@ -10,6 +10,15 @@ import (
 
 //https://www.cnblogs.com/yinbiao/p/15884420.html
 
+/*
+https://shaffer.cn/golang/golang-map-benchmark/
+https://segmentfault.com/a/1190000018448064
+https://blog.csdn.net/wyg_031113/article/details/106282340
+https://xiaorui.cc/archives/5611
+https://github.com/halfrost/Halfrost-Field/blob/master/contents/Go/go_map_chapter_one.md
+
+*/
+
 const (
 	count           = 1e6
 	concurrentCount = 10

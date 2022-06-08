@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func modifySlice() {
 	var s = []byte{'1', '2', '3', '4', '5', '6', '7', '8', '9'}

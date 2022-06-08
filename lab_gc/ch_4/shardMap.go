@@ -4,7 +4,7 @@ import "sync"
 
 type MapShards []MapShard
 
-const ShardCount = 64
+const ShardCount = 1024
 
 type MapShard struct {
 	items map[string]string

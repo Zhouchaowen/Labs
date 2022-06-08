@@ -6,14 +6,12 @@ import (
 	"time"
 )
 
+// 测试定时清理 CleanWindow
 func main() {
 	cache, _ := bigcache.NewBigCache(bigcache.Config{
-		Shards:             4,
-		CleanWindow:        time.Second,
-		MaxEntriesInWindow: 1,
-		MaxEntrySize:       256,
+		Shards:      4,
+		CleanWindow: time.Second,
 	})
-
 	// when
 	cache.Set("key", []byte("value"))
 	<-time.After(3 * time.Second)
