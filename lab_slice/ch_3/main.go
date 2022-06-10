@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 	"unsafe"
 )
 
@@ -37,6 +38,19 @@ func StructString() {
 	fmt.Printf("StructString slice pointer %p\n", s)
 	for i, _ := range s {
 		fmt.Printf("StructString slice idx %d , pointer %p\n", i, &s[i])
+	}
+
+	fmt.Println(unsafe.Sizeof(t{}))
+}
+
+func StructStringPointer() {
+	type t struct { // 8 字节
+		a *string
+	}
+	s := []t{{new(string)}, {new(string)}, {new(string)}}
+	fmt.Printf("StructPointer slice pointer %p\n", s)
+	for i, _ := range s {
+		fmt.Printf("StructPointer slice idx %d , pointer %p\n", i, &s[i])
 	}
 
 	fmt.Println(unsafe.Sizeof(t{}))
@@ -187,19 +201,6 @@ func StructSliceStringN() {
 	fmt.Println(unsafe.Sizeof(t{}))
 }
 
-func StructPointer() {
-	type t struct { // 8 字节
-		a *string
-	}
-	s := []t{{new(string)}, {new(string)}, {new(string)}}
-	fmt.Printf("StructPointer slice pointer %p\n", s)
-	for i, _ := range s {
-		fmt.Printf("StructPointer slice idx %d , pointer %p\n", i, &s[i])
-	}
-
-	fmt.Println(unsafe.Sizeof(t{}))
-}
-
 func StructSliceInt8Pointer() {
 	type t struct { // 24 字节
 		a []*int8
@@ -277,23 +278,84 @@ func StructStructPointer() {
 	fmt.Println(unsafe.Sizeof(tt{}))
 }
 
+func StructMapString() {
+	type t struct { // 8 字节
+		a map[string]string
+	}
+	s := make([]t, 3)
+	fmt.Printf("StructMapString slice pointer %p\n", s)
+	for i, _ := range s {
+		fmt.Printf("StructMapString slice idx %d , pointer %p\n", i, &s[i])
+	}
+
+	fmt.Println(unsafe.Sizeof(t{}))
+}
+
+func StructMapPointerString() {
+	type t struct { // 8 字节
+		a *map[string]string
+	}
+	s := make([]t, 3)
+	fmt.Printf("StructMapPointerString slice pointer %p\n", s)
+	for i, _ := range s {
+		fmt.Printf("StructMapPointerString slice idx %d , pointer %p\n", i, &s[i])
+	}
+
+	fmt.Println(unsafe.Sizeof(t{}))
+}
+
+func StructTimeString() {
+	type t struct { // 8 字节
+		a time.Time
+	}
+	s := make([]t, 3)
+	fmt.Printf("StructTimeString slice pointer %p\n", s)
+	for i, _ := range s {
+		fmt.Printf("StructTimeString slice idx %d , pointer %p\n", i, &s[i])
+	}
+
+	fmt.Println(unsafe.Sizeof(t{}))
+}
+
+func StructTimePointerString() {
+	type t struct { // 8 字节
+		a *time.Time
+	}
+	s := make([]t, 3)
+	fmt.Printf("StructTimePointerString slice pointer %p\n", s)
+	for i, _ := range s {
+		fmt.Printf("StructTimePointerString slice idx %d , pointer %p\n", i, &s[i])
+	}
+
+	fmt.Println(unsafe.Sizeof(t{}))
+}
+
 func main() {
-	StructInt()                    // 8 字节
-	StructString()                 // 16 字节
+	StructInt()           // 8 字节
+	StructString()        // 16 字节
+	StructStringPointer() // 8 字节
+
 	StructInterface()              // 16 字节
 	StructFuncInterface()          // 16 字节
 	StructFuncImplementInterface() // 16 字节
 	StructFunc()                   // 8 字节
-	StructSliceByte()              // 24 字节
-	StructSliceByteN()
-	StructSliceInt32() // 24 字节
-	StructSliceInt32N()
-	StructSliceString() // 24 字节
-	StructSliceStringN()
-	StructPointer()            // 8 字节
+
+	StructSliceByte()    // 24 字节
+	StructSliceByteN()   // n*byte 字节
+	StructSliceInt32()   // 24 字节
+	StructSliceInt32N()  // n*int 字节
+	StructSliceString()  // 24 字节
+	StructSliceStringN() // n*string 字节
+
 	StructSliceInt8Pointer()   // 24 字节
 	StructSliceStringPointer() // 24 字节
 	StructPointerSliceString() // 8 字节
 	StructStruct()             // 3 字节
 	StructStructPointer()      // 8 字节
+
+	StructMapString()        // 8 字节
+	StructMapPointerString() // 8 字节
+
+	StructTimeString()        // 24 字节
+	StructTimePointerString() // 8 字节
 }

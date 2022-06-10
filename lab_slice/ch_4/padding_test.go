@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// go test -gcflags "-N -l" -bench .
+// go test -gcflags "-N -l" -bench='Increase$' -benchmem .
 
 /*
 
