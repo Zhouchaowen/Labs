@@ -3,6 +3,7 @@ module Labs
 go 1.16
 
 require (
+	github.com/VictoriaMetrics/fastcache v1.10.0
 	github.com/allegro/bigcache/v3 v3.0.2
 	github.com/coocood/freecache v1.2.1
 	github.com/envoyproxy/protoc-gen-validate v0.6.7

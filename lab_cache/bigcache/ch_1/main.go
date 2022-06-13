@@ -13,6 +13,18 @@ func main() {
 
 	cache.Set("my-unique-key", []byte("value1"))
 
-	entry, _ := cache.Get("my-unique-key")
-	fmt.Println(string(entry))
+	entry, err := cache.Get("my-unique-key")
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Printf("Value:%s\n", string(entry))
+	}
+
+	cache.Delete("my-unique-key")
+	entry, err = cache.Get("my-unique-key")
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Printf("Value:%s\n", string(entry))
+	}
 }
