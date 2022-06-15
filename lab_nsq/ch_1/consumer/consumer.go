@@ -6,6 +6,8 @@ import (
 	"log"
 )
 
+var HOST = "10.2.0.105:4150"
+
 func doConsumerTask() {
 	// 1. 创建消费者
 	config := nsq.NewConfig()
@@ -26,7 +28,8 @@ func doConsumerTask() {
 	//	"10.2.8.17:4161",
 	//}
 	//err := q.ConnectToNSQLookupds(lookupAddr)
-	err := q.ConnectToNSQD("10.2.8.17:4150")
+
+	err := q.ConnectToNSQD(HOST)
 	if err != nil {
 		log.Panic("[ConnectToNSQLookupds] Could not find nsqd!")
 	}

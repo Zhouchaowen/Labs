@@ -24,6 +24,26 @@ func modifySlice() {
 	fmt.Printf("&b:%p\n", b)
 }
 
+func addSlice() {
+	a := []int{1, 2, 3, 4, 5, 6}
+	t := len(a)
+	aMap := make(map[int]bool)
+
+	for i := 0; i < t; i++ {
+		if aMap[a[i]] {
+			continue
+		}
+		aMap[a[i]] = true
+		if a[i] == 3 || a[i] == 9 {
+			a = append(a, []int{7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27}...)
+			t += 20
+		}
+
+		fmt.Println(a[i])
+	}
+}
+
 func main() {
-	modifySlice()
+	//modifySlice()
+	addSlice()
 }

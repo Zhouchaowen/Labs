@@ -8,10 +8,11 @@ import (
 )
 
 var nullLogger = log.New(ioutil.Discard, "", log.LstdFlags)
+var HOST = "10.2.0.105:4150"
 
 func sendMessage() {
 	config := nsq.NewConfig() // 1. 创建生产者
-	producer, err := nsq.NewProducer("10.2.8.17:4150", config)
+	producer, err := nsq.NewProducer(HOST, config)
 	if err != nil {
 		log.Fatalln("连接失败: (10.2.0.105:4150)", err)
 	}
