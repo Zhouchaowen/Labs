@@ -12,6 +12,7 @@ require (
 	github.com/google/gopacket v1.1.19
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.2
+	github.com/lib/pq v1.10.6
 	github.com/nsqio/go-nsq v1.1.0
 	go.uber.org/zap v1.21.0
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
