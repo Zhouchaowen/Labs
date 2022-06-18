@@ -14,9 +14,12 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.2
 	github.com/lib/pq v1.10.6
 	github.com/nsqio/go-nsq v1.1.0
+	go.uber.org/goleak v1.1.11
 	go.uber.org/zap v1.21.0
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
 	google.golang.org/genproto v0.0.0-20220525015930-6ca3db687a9d
 	google.golang.org/grpc v1.46.2
 	google.golang.org/protobuf v1.28.0
+	gorm.io/driver/postgres v1.3.7
+	gorm.io/gorm v1.23.6
 )

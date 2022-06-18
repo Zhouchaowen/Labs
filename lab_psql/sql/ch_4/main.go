@@ -1,9 +1,10 @@
 package main
 
 import (
+	"context"
 	"database/sql"
-	"fmt"
 	"log"
+	"time"
 
 	_ "github.com/lib/pq"
 	//_ "github.com/bmizerany/pq"
@@ -15,39 +16,34 @@ const (
 	DB_DSN = "postgres://postgres:lab_password@10.2.0.104:5432/postgres?sslmode=disable"
 )
 
-type User struct {
-	ID       int
-	Email    string
-	Password string
-}
+var db *sql.DB
+var err error
 
-func main() {
-	// Create DB pool
-	//db, err := sql.Open("postgres", "host=192.168.8.200 port=5432 user=postgres password=12345678 dbname=douyin sslmode=disable")
-	db, err := sql.Open("postgres", DB_DSN)
-	if err != nil {
-		log.Fatal("Failed to open a DB connection: ", err)
-	}
-	defer db.Close()
+func ContextSelectExample() {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
 
-	//执行更改操作
-	_, err = db.Exec("DELETE FROM  users  where id=$1", 4)
+	// If the context is canceled or timed out, the query execution will be stopped.
+	// If the query is INSERT or UPDATE you can use function ExecContext.
+	_, err = db.QueryContext(ctx, "SELECT pg_sleep(15)")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("query context err: ", err)
 	}
 	//打印日志
 	log.Printf("delete ok!!!")
+}
 
-	//测试数据是否更改成功，执行具体的查询语句
-	var myUser User
-	userSql := "SELECT id, email, password FROM users WHERE id = $1"
-
-	//设置查询参数为4，即要更改数据的ID值
-	err = db.QueryRow(userSql, 4).Scan(&myUser.ID, &myUser.Email, &myUser.Password)
+func init() {
+	// Create DB pool
+	// db, err := sql.Open("postgres", "host=10.2.0.104 port=5432 user=postgres password=lab_password dbname=postgres sslmode=disable")
+	db, err = sql.Open("postgres", DB_DSN)
 	if err != nil {
-		log.Fatal("Failed to execute query: ", err)
+		log.Fatal("Failed to open a DB connection: ", err)
 	}
+}
 
-	//输出查询结果
-	fmt.Printf("hello email: %s, password: %s, welcome back!\n", myUser.Email, myUser.Password)
+func main() {
+	defer db.Close()
+
+	ContextSelectExample()
 }

@@ -109,7 +109,7 @@ func Delete() {
 
 func main() {
 	// Create DB pool
-	//db, err := sql.Open("postgres", "host=192.168.8.200 port=5432 user=postgres password=12345678 dbname=douyin sslmode=disable")
+	//db, err := sql.Open("postgres", "host=10.2.0.104 port=5432 user=postgres password=lab_password dbname=postgres sslmode=disable")
 	db, err = sql.Open("postgres", DB_DSN)
 	if err != nil {
 		log.Fatal("Failed to open a DB connection: ", err)

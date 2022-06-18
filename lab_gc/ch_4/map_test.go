@@ -24,6 +24,7 @@ const (
 	concurrentCount = 10
 )
 
+// go test -gcflags "-N -l" -bench='^Benchmark' -benchmem .
 func BenchmarkShardMap(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
@@ -156,6 +157,7 @@ func BenchmarkSyncMap(b *testing.B) {
 	}
 }
 
+// go test -v -run ^Test
 func TestMutexMap(t *testing.T) {
 	sm := NewMutexMap()
 	wg := sync.WaitGroup{}

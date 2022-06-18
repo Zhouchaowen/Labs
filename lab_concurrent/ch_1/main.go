@@ -2,42 +2,46 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"time"
 )
 
-func fc1() {
-	var count = 0
-	//使用WaitGroup等待10个goroutine完成
-	var wg sync.WaitGroup
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for j := 0; j < 10000; j++ {
-				count++
-			}
-		}()
-	}
-	wg.Wait()
-	fmt.Println(count)
+func main() {
+	heroes := []string{"Marvel", "Flash", "Thanos", "Eagle", "Hulk", "Thor"}
+	spaceships := []string{"Battlecruiser", "Battleship", "Cruiseship", "Her Majesty's Ship", "Imperial Spaceship"}
+	go listHeroes(heroes)
+	go listSpaceships(spaceships)
+
+	<-time.After(time.Second * 10)
 }
 
-func main() {
-	var count = 0
-	//使用WaitGroup等待10个goroutine完成
-	var wg sync.WaitGroup
-	var mu sync.Mutex
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for j := 0; j < 10000; j++ {
-				mu.Lock()
-				count++
-				mu.Unlock()
-			}
-		}()
+func listHeroes(items []string) {
+	for i := range items {
+		fmt.Printf("Hero: %s\n", items[i])
+		time.Sleep(time.Second)
 	}
-	wg.Wait()
-	fmt.Println(count)
+
 }
+
+func listSpaceships(items []string) {
+	for i := range items {
+		fmt.Printf("Spaceship: %s\n", items[i])
+		time.Sleep(time.Second)
+	}
+}
+
+/* OUTPUT
+// Output always changes
+
+Hero: Marvel
+Spaceship: Battlecruiser
+Spaceship: Battleship
+Hero: Flash
+Spaceship: Cruiseship
+Hero: Thanos
+Spaceship: Her Majesty's Ship
+Hero: Flash
+Hero: Hulk
+Spaceship: Imperial Spaceship
+Hero: Thor
+
+*/
