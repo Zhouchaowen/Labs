@@ -1,22 +1,19 @@
 package main
 
-import (
-	"fmt"
-)
+import "time"
 
-func hello(done chan bool) {
-	fmt.Println("Hello world goroutine")
-	done <- true
+func timer(d time.Duration) <-chan int {
+	c := make(chan int)
+	go func() {
+		time.Sleep(d)
+		c <- 1
+	}()
+	return c
 }
 
 func main() {
-
-	// We can use channels to wait for goroutines
-	// This is called done channel which is in fact normal channel
-
-	done := make(chan bool)
-	go hello(done)
-
-	<-done
-	fmt.Println("main function")
+	for i := 0; i < 24; i++ {
+		c := timer(1 * time.Second)
+		<-c
+	}
 }

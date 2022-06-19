@@ -2,23 +2,40 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
-func producer(ch chan int) {
-	for i := 0; i < 10; i++ {
-		ch <- i
-		fmt.Println("wrote", i, "to ch")
+func worker(tasksCh <-chan int, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for {
+		task, ok := <-tasksCh
+		if !ok {
+			return
+		}
+		d := time.Duration(task) * time.Millisecond
+		time.Sleep(d)
+		fmt.Println("processing task", task)
 	}
-	close(ch)
 }
-func main() {
-	ch := make(chan int, 4)
-	go producer(ch)
-	time.Sleep(2 * time.Second)
 
-	for v := range ch {
-		fmt.Println("read ", v, "from ch")
-		time.Sleep(2 * time.Second)
+func pool(wg *sync.WaitGroup, workers, tasks int) {
+	tasksCh := make(chan int)
+
+	for i := 0; i < workers; i++ {
+		go worker(tasksCh, wg)
 	}
+
+	for i := 0; i < tasks; i++ {
+		tasksCh <- i
+	}
+
+	close(tasksCh)
+}
+
+func main() {
+	var wg sync.WaitGroup
+	wg.Add(36)
+	go pool(&wg, 36, 50)
+	wg.Wait()
 }

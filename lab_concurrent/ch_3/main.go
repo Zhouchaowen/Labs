@@ -1,39 +1,14 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
-
-func numbers(start chan bool) {
-	// Waiting for start chan to have a value or closed
-	<-start
-	for i := 1; i <= 5; i++ {
-		time.Sleep(250 * time.Millisecond)
-		fmt.Printf("%d ", i)
-	}
-}
-func alphabets(start chan bool) {
-	// Waiting for start chan to have a value or closed
-	<-start
-	for i := 'a'; i <= 'e'; i++ {
-		time.Sleep(400 * time.Millisecond)
-		fmt.Printf("%c ", i)
-	}
-}
 func main() {
+	// 创建一个int类型的通道
+	ch := make(chan int)
 
-	// In this example, we used channel close to
-	// start and stop goroutines
-
-	start := make(chan bool)
-
-	go numbers(start)
-	go alphabets(start)
-
-	time.Sleep(2 * time.Second)
-	close(start)
-	fmt.Println("Channel closed after 2 second")
-
-	<-time.After(time.Second * 5)
+	// 开启一个匿名 goroutine
+	go func() {
+		// 向通道发送数字42
+		ch <- 42
+	}()
+	// 从通道中读取
+	<-ch
 }

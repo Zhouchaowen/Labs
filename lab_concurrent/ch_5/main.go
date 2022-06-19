@@ -2,42 +2,31 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"time"
 )
 
-func fc1() {
-	var count = 0
-	//使用WaitGroup等待10个goroutine完成
-	var wg sync.WaitGroup
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for j := 0; j < 10000; j++ {
-				count++
-			}
-		}()
+func producer(ch chan int, d time.Duration) {
+	var i int
+	for {
+		ch <- i
+		i++
+		time.Sleep(d)
 	}
-	wg.Wait()
-	fmt.Println(count)
+}
+
+func reader(out chan int) {
+	for x := range out {
+		fmt.Println(x)
+	}
 }
 
 func main() {
-	var count = 0
-	//使用WaitGroup等待10个goroutine完成
-	var wg sync.WaitGroup
-	var mu sync.Mutex
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for j := 0; j < 10000; j++ {
-				mu.Lock()
-				count++
-				mu.Unlock()
-			}
-		}()
+	ch := make(chan int)
+	out := make(chan int)
+	go producer(ch, 100*time.Millisecond)
+	go producer(ch, 250*time.Millisecond)
+	go reader(out)
+	for i := range ch {
+		out <- i
 	}
-	wg.Wait()
-	fmt.Println(count)
 }
