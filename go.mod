@@ -8,6 +8,7 @@ require (
 	github.com/allegro/bigcache/v3 v3.0.2
 	github.com/coocood/freecache v1.2.1
 	github.com/envoyproxy/protoc-gen-validate v0.6.7
+	github.com/fsnotify/fsnotify v1.5.4
 	github.com/golang/protobuf v1.5.2
 	github.com/google/gopacket v1.1.19
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
@@ -15,6 +16,7 @@ require (
 	github.com/lib/pq v1.10.6
 	github.com/nsqio/go-nsq v1.1.0
 	github.com/spf13/viper v1.12.0
+	go.etcd.io/etcd/client/v3 v3.5.4 // indirect
 	go.uber.org/goleak v1.1.11
 	go.uber.org/zap v1.21.0
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
