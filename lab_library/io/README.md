@@ -1,8 +1,8 @@
 # io 相关实验
 
-- ch_1 
-- ch_2 
-- ch_3 
+- ch_1 Write和WriteTo用法
+- ch_2 io.Copy用法
+- ch_3 io.MultiWriter用法
 - ch_4 
 
 
