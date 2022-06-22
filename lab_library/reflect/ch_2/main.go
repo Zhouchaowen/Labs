@@ -5,11 +5,6 @@ import (
 	"reflect"
 )
 
-type Student struct {
-	name string
-	Age  int
-}
-
 func func1() {
 	var a int = 50
 	v := reflect.ValueOf(a) // 返回Value类型对象，值为50
@@ -36,6 +31,11 @@ func func2() {
 	bb.Index(0).SetInt(10)
 	// [10 6 7 8 0]
 	fmt.Println(bb)
+}
+
+type Student struct {
+	name string
+	Age  int
 }
 
 func func3() {
