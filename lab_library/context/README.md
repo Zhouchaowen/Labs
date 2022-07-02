@@ -18,6 +18,12 @@
 - Use context Values only for request-scoped data that transits processes and APIs, not for passing optional parameters to functions.
 - The same Context may be passed to functions running in different goroutines; Contexts are safe for simultaneous use by multiple goroutines.
 
+context作用域是请求级别，通过链式结构，将每个不同域区别开
+
+超时处理和取消，存取元数据(只能做旁路数据挂载)
+
+往下传的时候如果要修改挂载的元数据，必须 copy on write
+
 ## 参考
 
 https://www.jajaldoang.com/post/golang-function-timeout-with-context/

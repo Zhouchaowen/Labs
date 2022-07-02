@@ -15,8 +15,9 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.2
 	github.com/lib/pq v1.10.6
 	github.com/nsqio/go-nsq v1.1.0
+	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.12.0
-	go.etcd.io/etcd/client/v3 v3.5.4 // indirect
+	go.etcd.io/etcd/client/v3 v3.5.4
 	go.uber.org/goleak v1.1.11
 	go.uber.org/zap v1.21.0
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
