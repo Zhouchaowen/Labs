@@ -17,7 +17,7 @@ func boring(ctx context.Context, msg string) <-chan string { // <-chan string me
 				return
 			case c <- fmt.Sprintf("%s %d", msg, i):
 				fmt.Printf("send %s %d\n", msg, i)
-				//time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond) // 必要参数，否则无法正常关闭
+				//time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 			}
 		}
 	}()

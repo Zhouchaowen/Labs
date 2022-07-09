@@ -1,10 +1,10 @@
 # concurrent 相关实验
 
 - ch_1 通过`goroutines`并发打印字符串
-- ch_2 通过`context`控制`goroutines`退出
-- ch_3 `channel`基础用法
-- ch_4 `channel`基础用法
-- ch_5 `channel`简单生产者消费者
+- ch_2 通过`goroutines+channel`合并任务
+- ch_3 通过`goroutines+channel`合并任务并确认，有坑
+- ch_4 通过`channel`退出`goroutines`
+- ch_5 `channel`实现队列满，丢弃数据
 - ch_6 `channel`简单工作池模式
 - ch_7 `channel`简单工作池模式
 - ch_8 `goroutines+channel`简单服务器
@@ -40,3 +40,9 @@ https://github.com/hit9/Go-patterns-with-channel
 https://writings.sh/post/goroutine-guide-part-2
 
 https://github.com/luk4z7/go-concurrency-guide
+
+https://github.com/lotusirous/go-concurrency-patterns
+
+https://github.com/kat-co/concurrency-in-go-src
+
+https://github.com/gopcp/example.v2

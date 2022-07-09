@@ -31,8 +31,7 @@ func fanIn(ctx context.Context, inputs ...<-chan Message) <-chan Message {
 	return c
 }
 
-// the boring function return a channel to communicate with it.
-func boring(ctx context.Context, msg string) <-chan Message { // <-chan Message means receives-only channel of Message.
+func boring(ctx context.Context, msg string) <-chan Message {
 	c := make(chan Message)
 	waitForIt := make(chan string) // share between all messages
 	go func() {                    // we launch goroutine inside a function.
