@@ -302,3 +302,7 @@ https://zhuanlan.zhihu.com/p/260958352
 https://www.postgresql.org/download/linux/redhat/
 
 https://www.modb.pro/topic/152353
+
+https://www.modb.pro/db/73762?gky
+
+https://www.modb.pro/db/75268?gky
