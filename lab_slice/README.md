@@ -9,7 +9,7 @@
 内存对齐更加背数
 
 
-# 产考
+# 参考
 https://colobu.com/2019/01/24/cacheline-affects-performance-in-go/ 
 
 https://geektutu.com/post/hpg-struct-alignment.html

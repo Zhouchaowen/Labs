@@ -15,6 +15,8 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.2
 	github.com/lib/pq v1.10.6
 	github.com/nsqio/go-nsq v1.1.0
+	github.com/panjf2000/ants v1.3.0
+	github.com/panjf2000/ants/v2 v2.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.12.0
 	go.etcd.io/etcd/client/v3 v3.5.4
