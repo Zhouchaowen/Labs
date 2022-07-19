@@ -10,11 +10,12 @@ import (
 var HOST = "127.0.0.1:8080"
 
 func server() {
+	//1、监听端口
 	listener, err := net.Listen("tcp", HOST)
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	//2.建立套接字连接
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
@@ -27,24 +28,28 @@ func server() {
 			return
 		}
 
-		go func(conn net.Conn) {
-			w := bufio.NewWriter(conn)
-			r := bufio.NewReader(conn)
-			for {
-				ping, err := r.ReadString('\n')
-				if err != nil {
-					log.Fatal(err)
-				}
-				fmt.Printf("server receive msg -> %s", ping)
+		//3. 创建处理协程
+		go process(conn)
+	}
+}
 
-				_, err = w.WriteString("pong\n")
-				if err != nil {
-					log.Fatal(err)
-				}
-				w.Flush()
-				fmt.Println("server send msg -> pong")
-			}
-		}(conn)
+func process(conn net.Conn) {
+	defer conn.Close()
+	w := bufio.NewWriter(conn)
+	r := bufio.NewReader(conn)
+	for {
+		ping, err := r.ReadString('\n')
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("server receive msg -> %s", ping)
+
+		_, err = w.WriteString("pong\n")
+		if err != nil {
+			log.Fatal(err)
+		}
+		w.Flush()
+		fmt.Println("server send msg -> pong")
 	}
 }
 

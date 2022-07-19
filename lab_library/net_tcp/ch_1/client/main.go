@@ -22,6 +22,7 @@ func client() {
 		for {
 			select {
 			case <-time.After(2 * time.Second):
+				// 1、回复服务器信息
 				_, err := w.WriteString("ping\n")
 				if err != nil {
 					log.Fatal(err)
@@ -35,6 +36,7 @@ func client() {
 
 	go func() {
 		for {
+			// 1、一直读取直到读到\n
 			pong, err := r.ReadString('\n')
 			if err != nil {
 				log.Fatal(err)

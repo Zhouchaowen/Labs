@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Labs/lab_udp/ch_3/codec"
+	"Labs/lab_library/net_udp/ch_3/codec"
 	"fmt"
 	"log"
 	"net"
