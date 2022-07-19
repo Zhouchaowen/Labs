@@ -23,13 +23,13 @@ var ErrStructType = errors.New("EOF")
 func New(text string) error {
 	return &errorString{text}  返回指针
 }
- */
+*/
 func main() {
-	if ErrNamedType == New("EOF"){
+	if ErrNamedType == New("EOF") {
 		fmt.Println("Named Type Error")
 	}
 
-	if ErrStructType == errors.New("EOF"){
+	if ErrStructType == errors.New("EOF") {
 		fmt.Println("Struct Type Error")
 	}
 }

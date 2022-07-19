@@ -5,22 +5,22 @@ import (
 	"fmt"
 )
 
-func Positive(n int) (bool,error) {
+func Positive(n int) (bool, error) {
 	if n == 0 {
-		return false,errors.New("undefined")
+		return false, errors.New("undefined")
 	}
-	return n > -1,nil
+	return n > -1, nil
 }
 
-func Check(n int)  {
-	pos ,err := Positive(n)
+func Check(n int) {
+	pos, err := Positive(n)
 	if err != nil {
 		fmt.Println("is neither")
 		return
 	}
 	if pos {
 		fmt.Println("is positive")
-	}else {
+	} else {
 		fmt.Println("is negative")
 	}
 }
@@ -36,7 +36,7 @@ func Check(n int)  {
 	完全交给你来控制 error
 	Error are values
 
- */
+*/
 func main() {
 	Check(1)
 	Check(0)
