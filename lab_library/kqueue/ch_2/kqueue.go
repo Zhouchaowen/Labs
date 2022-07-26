@@ -33,7 +33,7 @@ func NewEventLoop(s *Socket) (*EventLoop, error) {
 
 		See https://www.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2
 	*/
-	changeEvent := syscall.Kevent_t{
+	changeEvent := syscall.Kevent_t{ // 将socket描述符，封装成事件
 		Ident:  uint64(s.FileDescriptor),
 		Filter: syscall.EVFILT_READ,
 		Flags:  syscall.EV_ADD | syscall.EV_ENABLE,
@@ -47,7 +47,7 @@ func NewEventLoop(s *Socket) (*EventLoop, error) {
 		First, we register the change event with the queue, leaving the third argument empty.
 
 		See https://www.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2
-	*/
+	*/ // 将封装好的事件添加到内核队列kQueue
 	changeEventRegistered, err := syscall.Kevent(kQueue, []syscall.Kevent_t{changeEvent}, nil, nil)
 	if err != nil || changeEventRegistered == -1 {
 		return nil, fmt.Errorf("failed to register change event (%v)", err)
@@ -57,15 +57,13 @@ func NewEventLoop(s *Socket) (*EventLoop, error) {
 }
 
 func (eventLoop *EventLoop) Handle(handler Handler) {
-	/*
-		Event loop, checking the kernel queue for new events and executing handlers.
-	*/
+	// 事件循环，检查内核队列中的新事件并执行处理程序。
 	for {
 		/*
 			Then, we query the queue for pending events, leaving the second argument empty.
 		*/
 		log.Println("Polling for new events...")
-		newEvents := make([]syscall.Kevent_t, 10)
+		newEvents := make([]syscall.Kevent_t, 10) // 获取活跃的事件
 		numNewEvents, err := syscall.Kevent(eventLoop.KqueueFileDescriptor, nil, newEvents, nil)
 		if err != nil {
 			/*
@@ -77,7 +75,7 @@ func (eventLoop *EventLoop) Handle(handler Handler) {
 
 		for i := 0; i < numNewEvents; i++ {
 			currentEvent := newEvents[i]
-			eventFileDescriptor := int(currentEvent.Ident)
+			eventFileDescriptor := int(currentEvent.Ident) // 获取描述符
 
 			if currentEvent.Flags&syscall.EV_EOF != 0 {
 				/*
@@ -99,7 +97,7 @@ func (eventLoop *EventLoop) Handle(handler Handler) {
 				/*
 					Watch for data coming in through the new connection.
 				*/
-				socketEvent := syscall.Kevent_t{
+				socketEvent := syscall.Kevent_t{ // 将新请求封装为事件
 					Ident:  uint64(socketConnection),
 					Filter: syscall.EVFILT_READ,
 					Flags:  syscall.EV_ADD,

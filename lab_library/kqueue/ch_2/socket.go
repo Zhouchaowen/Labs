@@ -59,13 +59,11 @@ func FromFileDescriptor(fileDescriptor int) *Socket {
 func Listen(ip string, port int) (*Socket, error) {
 	socket := &Socket{}
 
-	/*
-		Register SIGTERM handler to ensure socket closing.
-	*/
+	// Register SIGTERM handler to ensure socket closing.
 	signalChannel := make(chan os.Signal)
 	signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
 	go func() {
-		<-signalChannel
+		<-signalChannel // 安全关闭
 		socket.Close()
 		os.Exit(0)
 	}()
@@ -98,7 +96,7 @@ func Listen(ip string, port int) (*Socket, error) {
 		Bind the Socket to a port
 	*/
 	socketAddress := &syscall.SockaddrInet4{Port: port}
-	copy(socketAddress.Addr[:], net.ParseIP(ip))
+	copy(socketAddress.Addr[:], net.ParseIP(ip)) // 将socket描述符绑定到ip+port上
 	if err = syscall.Bind(socket.FileDescriptor, socketAddress); err != nil {
 		return nil, fmt.Errorf("failed to bind socket (%v)", err)
 	}
