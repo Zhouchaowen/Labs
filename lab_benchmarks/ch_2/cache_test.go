@@ -1,5 +1,12 @@
-// go test -run none -bench . -benchtime 3s
+// go test -run none -bench . -benchtime 3s -benchmem
 
+// pkg: Labs/lab_benchmarks/ch_2
+// cpu: Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz
+// BenchmarkLinkListTraverse-4           97          41356009 ns/op		链表遍历
+// BenchmarkColumnTraverse-4             15         270230063 ns/op		列遍历
+// BenchmarkRowTraverse-4               169          22363810 ns/op		行遍历
+
+// 不同数据结构对cpu缓存的利用
 // Tests to show how Data Oriented Design matters.
 package caching
 
