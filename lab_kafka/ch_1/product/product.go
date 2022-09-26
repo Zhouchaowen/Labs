@@ -14,8 +14,8 @@ import (
 
 const HOST = "10.2.0.104:9092"
 
+// 异步发送
 func main() {
-
 	// Setup configuration
 	config := sarama.NewConfig()
 	// Return specifies what channels will be populated.
@@ -50,7 +50,7 @@ func main() {
 			time.Sleep(500 * time.Millisecond)
 
 			strTime := strconv.Itoa(int(time.Now().Unix()))
-			msg := &sarama.ProducerMessage{
+			msg := &sarama.ProducerMessage{ // 封装消息
 				Topic: "important",
 				Key:   sarama.StringEncoder(strTime),
 				Value: sarama.StringEncoder("Something Cool"),

@@ -24,7 +24,7 @@ func cpu() {
 	}
 }
 
-// go tool pprof http://10.2.8.17:6060/debug/pprof/profile\?seconds\=20
+// go tool pprof http://127.0.0.1:6060/debug/pprof/profile\?seconds\=20
 func main() {
 	runtime.GOMAXPROCS(1)              // 限制 CPU 使用数，避免过载
 	runtime.SetMutexProfileFraction(1) // 开启对锁调用的跟踪

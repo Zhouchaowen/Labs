@@ -28,14 +28,7 @@ func fib2(n int) int {
 	return f2
 }
 
-// go tool pprof http://10.2.8.17:6060/debug/pprof/profile\?seconds\=20
-/*
-flat：给定函数上运行耗时
-flat%：同上的 CPU 运行耗时总比例
-sum%：给定函数累积使用 CPU 总比例
-cum：当前函数加上它之上的调用运行总耗时
-cum%：同上的 CPU 运行耗时总比例
-*/
+// go tool pprof http://127.0.0.1:6060/debug/pprof/profile\?seconds\=20
 func main() {
 	go func() {
 		http.ListenAndServe("0.0.0.0:6060", nil)
@@ -50,3 +43,11 @@ func main() {
 		}
 	}
 }
+
+/*
+flat：给定函数上运行耗时
+flat%：同上的 CPU 运行耗时总比例
+sum%：给定函数累积使用 CPU 总比例
+cum：当前函数加上它之上的调用运行总耗时
+cum%：同上的 CPU 运行耗时总比例
+*/

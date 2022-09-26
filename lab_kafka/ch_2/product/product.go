@@ -12,21 +12,13 @@ import (
 const (
 	HOST = "10.2.0.104:9092"
 	// Topic 注: 如果关闭了自动创建分区，使用前都需要手动创建对应分区
-	Topic            = "standAlone"
-	Topic2           = "consumerGroup"
-	Topic3           = "benchmark"
-	TopicPartition   = "partition"
-	TopicCompression = "compression"
-	DefaultPartition = 0
-	ConsumerGroupID  = "cg1"
-	ConsumerGroupID2 = "cg2"
+	Topic = "standAlone"
 )
 
 /*
 	本例展示最简单的 同步生产者 的使用（除同步生产者外 kafka 还有异步生产者）
 	名词 sync producer
 */
-
 func Producer(topic string, limit int) {
 	config := sarama.NewConfig()
 	// 同步生产者必须同时开启 Return.Successes 和 Return.Errors

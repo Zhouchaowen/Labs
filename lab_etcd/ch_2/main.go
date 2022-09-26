@@ -11,6 +11,7 @@ import (
 
 var HOST = "10.2.0.104"
 
+// Watch 监听Key变动
 func main() {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   []string{HOST + ":2379"}, //如果是集群，就在后面机上所有的节点[]string{"localhost:2379", "localhost:22379", "localhost:32379"},

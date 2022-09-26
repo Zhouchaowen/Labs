@@ -1,7 +1,7 @@
 # etcd 相关实验
 
 - ch_1 PUT/GET 基础操作
-- ch_2 Watch 监听key变动
+- ch_2 Watch 监听Key变动
 - ch_3 Grant 设置过期租约
 - ch_4 KeepAlive
 

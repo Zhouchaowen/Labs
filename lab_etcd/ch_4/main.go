@@ -11,6 +11,7 @@ import (
 
 var HOST = "10.2.0.104"
 
+// KeepAlive
 func main() {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   []string{HOST + ":2379"}, // 如果是集群，就在后面机上所有的节点[]string{"localhost:2379", "localhost:22379", "localhost:32379"},
@@ -28,7 +29,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_, err = cli.Put(context.TODO(), "KeepAlive", "dsb", clientv3.WithLease(resp.ID))
+	_, err = cli.Put(context.TODO(), "KeepAlive", "dsb", clientv3.WithLease(resp.ID)) // 将租约 ID 附加到“Put”请求中的键
 	if err != nil {
 		log.Fatal(err)
 	}

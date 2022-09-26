@@ -7,8 +7,10 @@ require (
 	github.com/VictoriaMetrics/fastcache v1.10.0
 	github.com/allegro/bigcache/v3 v3.0.2
 	github.com/coocood/freecache v1.2.1
+	github.com/davecgh/go-spew v1.1.1
 	github.com/envoyproxy/protoc-gen-validate v0.6.7
 	github.com/fsnotify/fsnotify v1.5.4
+	github.com/go-redis/redis/v9 v9.0.0-beta.2
 	github.com/golang/protobuf v1.5.2
 	github.com/google/gopacket v1.1.19
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
@@ -26,6 +28,7 @@ require (
 	google.golang.org/genproto v0.0.0-20220525015930-6ca3db687a9d
 	google.golang.org/grpc v1.46.2
 	google.golang.org/protobuf v1.28.0
+	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/postgres v1.3.7
 	gorm.io/gorm v1.23.6
 )

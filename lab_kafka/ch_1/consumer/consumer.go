@@ -13,6 +13,9 @@ const HOST = "10.2.0.104:9092"
 func main() {
 
 	config := sarama.NewConfig()
+
+	// Return 指定将填充哪些通道。如果它们设置为 true，则必须读取它们以防止死锁。
+	// 如果启用，则在使用时发生的任何错误都会在错误通道上返回（默认禁用）。
 	config.Consumer.Return.Errors = true
 
 	// Specify brokers address. This is default one
