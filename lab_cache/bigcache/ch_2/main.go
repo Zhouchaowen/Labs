@@ -1,3 +1,4 @@
+// Append 相同key的追加模式
 package main
 
 import (
@@ -6,7 +7,6 @@ import (
 	"time"
 )
 
-// 测试hash冲突 Append
 func main() {
 	cache, _ := bigcache.NewBigCache(bigcache.DefaultConfig(10 * time.Minute))
 

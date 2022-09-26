@@ -10,7 +10,7 @@ import (
 // 不设置LifeWindow的话会导致最先写入的数据，在load缓存数据的过程中就失效被剔除。
 func main() {
 	onRemove := func(key string, entry []byte) {
-		fmt.Printf("key:%s,vaule:%s removed\n", key, entry)
+		fmt.Printf("[callback] key:%s,vaule:%s removed\n", key, entry)
 	}
 
 	cache, _ := bigcache.NewBigCache(bigcache.Config{

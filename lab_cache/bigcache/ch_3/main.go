@@ -1,3 +1,4 @@
+// LifeWindow 验证设置条目过期时间
 package main
 
 import (
@@ -6,22 +7,9 @@ import (
 	"time"
 )
 
-func LifeWind() {
-	cache, _ := bigcache.NewBigCache(bigcache.DefaultConfig(1 * time.Second))
-	// when
-	cache.Set("key", []byte("value"))
-	<-time.After(3 * time.Second)
-	value, err := cache.Get("key")
-	if err != nil {
-		fmt.Println(err.Error())
-	} else {
-		fmt.Println(string(value))
-	}
-}
-
-func CleanWind() {
+func LifeWindow1() {
 	cache, _ := bigcache.NewBigCache(bigcache.Config{
-		Shards:      4,
+		Shards:      1, // 为了演示set时 剔除过期清除
 		LifeWindow:  time.Second,
 		CleanWindow: 0,
 	})
@@ -30,14 +18,49 @@ func CleanWind() {
 	<-time.After(3 * time.Second)
 	value, err := cache.Get("key")
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("LifeWindow1: ", err.Error())
 	} else {
-		fmt.Println(string(value))
+		fmt.Println("LifeWindow1: ", string(value))
 	}
 }
 
-// 测试过期删除 LifeWindow
+func LifeWindow2() {
+	cache, _ := bigcache.NewBigCache(bigcache.Config{
+		Shards:      1, // 为了演示set时 剔除过期清除
+		LifeWindow:  time.Second,
+		CleanWindow: 0,
+	})
+	// when
+	cache.Set("key", []byte("value"))
+	<-time.After(3 * time.Second)
+	cache.Set("key2", []byte("value2")) // set时将key的过期数据剔除
+	value, err := cache.Get("key")
+	if err != nil {
+		fmt.Println("LifeWindow2: ", err.Error())
+	} else {
+		fmt.Println("LifeWindow2: ", string(value))
+	}
+}
+
+func LifeWindow3() {
+	cache, _ := bigcache.NewBigCache(bigcache.Config{
+		Shards:     1,
+		LifeWindow: 4 * time.Second,
+	})
+	// when
+	cache.Set("key", []byte("value"))
+	<-time.After(3 * time.Second)
+	cache.Set("key2", []byte("value2"))
+	value, err := cache.Get("key")
+	if err != nil {
+		fmt.Println("LifeWindow3: ", err.Error())
+	} else {
+		fmt.Println("LifeWindow3: ", string(value))
+	}
+}
+
 func main() {
-	//LifeWind()
-	CleanWind()
+	LifeWindow1()
+	LifeWindow2()
+	LifeWindow3()
 }
