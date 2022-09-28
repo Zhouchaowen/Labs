@@ -65,19 +65,19 @@ func main() {
 
 	var nbp nbp
 	size := unsafe.Sizeof(nbp)
-	fmt.Printf("SizeOf[%d][%p %p %p]\n", size, &nbp.a, &nbp.b, &nbp.c)
+	fmt.Printf("SizeOf[%d] [%p %p %p]\n", size, &nbp.a, &nbp.b, &nbp.c)
 
 	// =========================================================================
 
 	var sbp sbp
 	size = unsafe.Sizeof(sbp)
-	fmt.Printf("SizeOf[%d][%p %p]\n", size, &sbp.a, &sbp.b)
+	fmt.Printf("SizeOf[%d] [%p %p]\n", size, &sbp.a, &sbp.b)
 
 	// =========================================================================
 
 	var tbp tbp
 	size = unsafe.Sizeof(tbp)
-	fmt.Printf("SizeOf[%d][%p %p]\n", size, &tbp.a, &tbp.b)
+	fmt.Printf("SizeOf[%d] [%p %p]\n", size, &tbp.a, &tbp.b)
 
 	// =========================================================================
 
