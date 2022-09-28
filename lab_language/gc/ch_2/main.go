@@ -1,3 +1,6 @@
+// 结构体类型 Gc问题
+
+// 结构体只包含基础类型，组成的数组GC扫描时会忽略它
 package main
 
 import (
@@ -11,7 +14,6 @@ type t struct {
 }
 
 // a存储的数据时指针，gc会扫描数组每个原始，检查如果是指针会继续扫描下去
-// gc耗时
 func func1() {
 	a := make([]*t, 1e9)
 	for i := 0; i < 10; i++ {
@@ -22,6 +24,7 @@ func func1() {
 	runtime.KeepAlive(a)
 }
 
+// gc耗时 GC took 655.397µs
 func func2() {
 	a := make([]t, 1e9)
 	for i := 0; i < 10; i++ {
@@ -32,6 +35,7 @@ func func2() {
 	runtime.KeepAlive(a)
 }
 
+// t3.str string 是引用类型 GC会扫描
 type t3 struct {
 	p   int32
 	str string
@@ -47,6 +51,7 @@ func func3() {
 	runtime.KeepAlive(a)
 }
 
+// t4.str []byte 是引用类型 GC会扫描
 type t4 struct {
 	p   int32
 	str []byte
@@ -62,6 +67,7 @@ func func4() {
 	runtime.KeepAlive(a)
 }
 
+// t5.t time.Time 是引用类型 GC会扫描
 type t5 struct {
 	p int32
 	t time.Time

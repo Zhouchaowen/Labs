@@ -1,7 +1,6 @@
 package ch_4
 
 import (
-	"fmt"
 	"math/rand"
 	"strconv"
 	"sync"
@@ -173,8 +172,8 @@ func TestMutexMap(t *testing.T) {
 	go func() {
 		defer wg.Done()
 		for i := 0; i < count; i++ {
-			if value, ok := sm.Get("key_" + strconv.Itoa(i)); ok {
-				fmt.Println(value)
+			if _, ok := sm.Get("key_" + strconv.Itoa(i)); ok {
+				//fmt.Println(value)
 			}
 		}
 	}()

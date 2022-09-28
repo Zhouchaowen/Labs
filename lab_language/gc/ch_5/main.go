@@ -1,67 +1,47 @@
+// 通过MMap分配内存，绕过GC管理
 package main
 
-import "fmt"
-
-/*
-	Pointer 使用指针方法当前地址固定
-	Value   使用值方法当前地址随用随分配
-
-	addr P:0xc00000c030
-	addr P.A:0xc00000c030
-	addr P.B:0xc00000c040
-	addr P:0xc00000c030
-	addr P.A:0xc00000c030
-	addr P.B:0xc00000c040
-	-----------
-	addr V:0xc00000c048
-	addr V.A:0xc00000c048
-	addr V.B:0xc00000c058
-	addr V:0xc00000c060
-	addr V.A:0xc00000c060
-	addr V.B:0xc00000c070
-*/
-
-type Pointer struct {
-	A string
-	B int
-}
-
-func (p *Pointer) methodA() {
-	fmt.Printf("addr P:%p\n", p)
-	fmt.Printf("addr P.A:%p\n", &p.A)
-	fmt.Printf("addr P.B:%p\n", &p.B)
-}
-
-func (p *Pointer) methodB() {
-	fmt.Printf("addr P:%p\n", p)
-	fmt.Printf("addr P.A:%p\n", &p.A)
-	fmt.Printf("addr P.B:%p\n", &p.B)
-}
-
-type Value struct {
-	A string
-	B int
-}
-
-func (v Value) methodA() {
-	fmt.Printf("addr V:%p\n", &v)
-	fmt.Printf("addr V.A:%p\n", &v.A)
-	fmt.Printf("addr V.B:%p\n", &v.B)
-}
-
-func (v Value) methodB() {
-	fmt.Printf("addr V:%p\n", &v)
-	fmt.Printf("addr V.A:%p\n", &v.A)
-	fmt.Printf("addr V.B:%p\n", &v.B)
-}
+import (
+	"fmt"
+	"reflect"
+	"runtime"
+	"syscall"
+	"time"
+	"unsafe"
+)
 
 func main() {
-	p := Pointer{}
-	p.methodA()
-	p.methodB()
+	var example *int
+	slice := makeSlice(1e9, unsafe.Sizeof(example))
+	a := *(*[]*int)(unsafe.Pointer(&slice))
 
-	fmt.Println("-----------")
-	v := Value{}
-	v.methodA()
-	v.methodB()
+	for i := 0; i < 10; i++ {
+		start := time.Now()
+		runtime.GC()
+		fmt.Printf("GC took %s\n", time.Since(start))
+	}
+
+	runtime.KeepAlive(a)
+}
+
+func makeSlice(len int, eltsize uintptr) reflect.SliceHeader {
+	fd := -1
+	data, _, errno := syscall.Syscall6(
+		syscall.SYS_MMAP,
+		0, // address
+		uintptr(len)*eltsize,
+		syscall.PROT_READ|syscall.PROT_WRITE,
+		syscall.MAP_ANON|syscall.MAP_PRIVATE,
+		uintptr(fd), // No file descriptor
+		0,           // offset
+	)
+	if errno != 0 {
+		panic(errno)
+	}
+
+	return reflect.SliceHeader{
+		Data: data,
+		Len:  len,
+		Cap:  len,
+	}
 }

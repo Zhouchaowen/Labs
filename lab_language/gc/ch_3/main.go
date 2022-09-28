@@ -1,3 +1,4 @@
+// 组成元素都是基础类型的话，GC扫描将会忽略它
 package main
 
 import (
