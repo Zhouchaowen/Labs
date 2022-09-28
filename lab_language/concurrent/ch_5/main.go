@@ -1,3 +1,4 @@
+// channel实现队列满，丢弃数据
 package main
 
 import "log"

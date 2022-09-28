@@ -1,3 +1,9 @@
+// 通过goroutines+channel合并任务
+/*
+    Joe task boring ------|
+                   		  |--------fanIn
+	Ahn task boring ------|
+*/
 package main
 
 import (

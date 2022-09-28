@@ -1,3 +1,4 @@
+// channel简单工作池模式
 package main
 
 import (

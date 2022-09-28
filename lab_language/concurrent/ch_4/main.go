@@ -1,3 +1,4 @@
+// 通过channel退出goroutines
 package main
 
 import (
@@ -9,6 +10,10 @@ import (
 func boring(msg string, quit chan string) <-chan string {
 	c := make(chan string)
 	go func() {
+		defer func() {
+			fmt.Println("goroutines exit!")
+		}()
+
 		for i := 0; ; i++ {
 			select {
 			case c <- fmt.Sprintf("%s %d", msg, i):
@@ -21,7 +26,6 @@ func boring(msg string, quit chan string) <-chan string {
 			}
 			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 		}
-
 	}()
 	return c
 }
@@ -35,5 +39,5 @@ func main() {
 	quit <- "Bye"
 	time.Sleep(3 * time.Second)
 	fmt.Println("Joe say:", <-quit)
-	time.Sleep(1 * time.Second)
+	time.Sleep(10 * time.Second)
 }
