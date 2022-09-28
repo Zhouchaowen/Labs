@@ -8,7 +8,7 @@ func test1() (x int) {
 	return 9
 }
 
-func test2() (x int) {
+func test2() (x int) { // 对比test3
 	x = 7
 	defer fmt.Printf("in defer: x = %d\n", x) // 使用外部变量x=7
 	return 9
