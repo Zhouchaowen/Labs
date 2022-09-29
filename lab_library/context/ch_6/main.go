@@ -1,3 +1,4 @@
+// 父ctx进行cancel()后，所有子ctx.Done()都收到信号。
 package main
 
 import (
@@ -14,7 +15,7 @@ func funcA() {
 
 	select {
 	case <-time.After(5 * time.Second):
-		fmt.Println("time out")
+		fmt.Println("cancel()")
 	}
 }
 

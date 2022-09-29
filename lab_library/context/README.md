@@ -4,7 +4,10 @@
 - ch_2 `WithDeadline`演示传递了一个带有任意截止日期的上下文来告诉一个阻塞函数它应该在它到达它时立即放弃它的工作。
 - ch_3 `WithTimeout`演示超时的上下文来告诉一个阻塞函数它应该在超时后放弃它的工作。
 - ch_4 `WithValue`演示如何将一个值传递给上下文，以及如何在它存在时检索它。
-
+- ch_5 父`context`传递信息，子`context`继续传递消息
+- ch_6 父`ctx`进行`cancel()`后，所有子`ctx.Done()`都收到信号。
+- ch_7 子`ctx`被改变类型后，父`ctx`进行`cancel()`，所有子`ctx.Done()`都收到信号。
+- ch_8 子`ctx`被`cancel()`，子ctx的所有孙子`ctx.Done()`都收到信号；子`ctx`的所有父亲不受影响，`ctx.Done()`不会收到信号。
 
 
 ## Notes
@@ -31,6 +34,8 @@ https://www.jajaldoang.com/post/golang-function-timeout-with-context/
 https://www.cnblogs.com/-lee/p/12820994.html
 
 https://codeantenna.com/a/Q47HvbRdRm
+
+https://wzmmmmj.com/2021/01/24/golang-context/
 
 https://jasonkayzk.github.io/2021/04/21/%E4%BD%BF%E7%94%A8Uber%E5%BC%80%E6%BA%90%E7%9A%84goleak%E5%BA%93%E8%BF%9B%E8%A1%8Cgoroutine%E6%B3%84%E9%9C%B2%E6%A3%80%E6%B5%8B/
 

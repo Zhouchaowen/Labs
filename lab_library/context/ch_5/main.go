@@ -1,3 +1,4 @@
+// 父context传递信息，子context继续传递消息
 package main
 
 import (
@@ -21,7 +22,7 @@ func funcA() {
 func funcB1(ctx context.Context) {
 	v := ctx.Value("KeyA")
 	fmt.Println("funcB1: ", v)
-	ctx = context.WithValue(ctx, "KeyB", "ValueB")
+	ctx = context.WithValue(ctx, "KeyB", "ValueB1")
 
 	go funcC1(ctx)
 }
@@ -30,7 +31,7 @@ func funcB2(ctx context.Context) {
 	v := ctx.Value("KeyA")
 	fmt.Println("funcB2: ", v)
 
-	ctx = context.WithValue(ctx, "KeyB", "ValueB")
+	ctx = context.WithValue(ctx, "KeyB", "ValueB2")
 	go funcC2(ctx)
 
 }

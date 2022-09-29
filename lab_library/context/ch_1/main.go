@@ -1,3 +1,4 @@
+// 演示取消上下文来防止 goroutine 泄漏
 package main
 
 import (
@@ -8,7 +9,6 @@ import (
 // This example demonstrates the use of a cancelable context to prevent a
 // goroutine leak. By the end of the example function, the goroutine started
 // by gen will return without leaking.
-// 使用可取消上下文来防止 goroutine 泄漏
 func ExampleWithCancel() {
 	// gen generates integers in a separate goroutine and
 	// sends them to the returned channel.

@@ -1,3 +1,4 @@
+// 演示传递了一个带有任意截止日期的上下文来告诉一个阻塞函数它应该在它到达它时立即放弃它的工作。
 package main
 
 import (
@@ -10,7 +11,6 @@ const shortDuration = 1 * time.Millisecond // a reasonable duration to block in 
 
 // This example passes a context with an arbitrary deadline to tell a blocking
 // function that it should abandon its work as soon as it gets to it.
-// 演示传递了一个带有任意截止日期的上下文来告诉一个阻塞函数它应该在它到达它时立即放弃它的工作。
 func ExampleWithDeadline() {
 	d := time.Now().Add(shortDuration)
 	ctx, cancel := context.WithDeadline(context.Background(), d)

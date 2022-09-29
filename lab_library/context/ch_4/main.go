@@ -1,3 +1,4 @@
+// 演示如何将一个值传递给上下文，以及如何在它存在时检索它。
 package main
 
 import (
@@ -7,7 +8,6 @@ import (
 
 // This example demonstrates how a value can be passed to the context
 // and also how to retrieve it if it exists.
-// 演示如何将一个值传递给上下文，以及如何在它存在时检索它。
 func ExampleWithValue() {
 	type favContextKey string
 
