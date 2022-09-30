@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Labs/lab_grpc/ch_9/pkg/auth"
-	"Labs/lab_grpc/ch_9/proto"
+	"Labs/lab_library/grpc/ch_9/pkg/auth"
+	"Labs/lab_library/grpc/ch_9/proto"
 	"context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

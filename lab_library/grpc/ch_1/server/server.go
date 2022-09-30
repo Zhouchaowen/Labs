@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Labs/lab_grpc/ch_1/proto"
+	"Labs/lab_library/grpc/ch_1/proto"
 	"context"
 	"log"
 	"net"

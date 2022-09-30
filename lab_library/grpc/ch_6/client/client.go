@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Labs/lab_grpc/ch_6/proto"
+	"Labs/lab_library/grpc/ch_6/proto"
 	"context"
 	"fmt"
 	grpc_retry "github.com/grpc-ecosystem/go-grpc-middleware/retry"

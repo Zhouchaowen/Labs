@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Labs/lab_grpc/ch_11/proto"
+	"Labs/lab_library/grpc/ch_11/proto"
 	"context"
 	"fmt"
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Labs/lab_library/grpc/ch_7/proto"
 	"context"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
@@ -8,8 +9,6 @@ import (
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	"google.golang.org/grpc"
 	"net"
-
-	"Labs/lab_grpc/ch_7/proto"
 )
 
 type Server struct{}

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Labs/lab_grpc/ch_8/proto"
+	"Labs/lab_library/grpc/ch_8/proto"
 	"google.golang.org/grpc"
 	"log"
 	"net"

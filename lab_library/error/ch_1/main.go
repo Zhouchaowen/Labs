@@ -1,3 +1,4 @@
+// errors.New()返回指针，不能直接用于错误相等
 package main
 
 import (

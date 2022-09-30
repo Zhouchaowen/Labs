@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Labs/lab_grpc/ch_4/proto"
+	"Labs/lab_library/grpc/ch_4/proto"
 	"context"
 	"google.golang.org/grpc"
 	"log"
