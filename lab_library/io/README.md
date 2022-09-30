@@ -2,8 +2,8 @@
 
 - ch_1 Write和WriteTo用法
 - ch_2 io.Copy用法
-- ch_3 io.MultiWriter用法
-- ch_4 
+- ch_3 io.MultiWriter用法简单版
+- ch_4 io.MultiWriter用法完善版
 
 
 ## 参考

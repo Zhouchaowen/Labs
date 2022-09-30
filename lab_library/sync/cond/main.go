@@ -1,3 +1,4 @@
+// 等待唤醒
 package main
 
 import (
@@ -49,6 +50,7 @@ func cond_1() {
 }
 
 // 区别 cond_2 方法,改变
+// 导致死锁
 func cond_2() {
 	var wg sync.WaitGroup
 	wg.Add(2)
@@ -87,8 +89,8 @@ func cond_2() {
 }
 
 func main() {
-	//cond_1()
-	cond_2()
+	cond_1()
+	//cond_2()
 }
 
 /*

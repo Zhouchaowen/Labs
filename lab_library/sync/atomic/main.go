@@ -1,3 +1,4 @@
+// 原子操作
 package main
 
 import (
@@ -45,11 +46,13 @@ func readMostly() {
 	var m atomic.Value
 	m.Store(make(Map))
 	var mu sync.Mutex // used only by writers
+
 	// read function can be used to read the data without further synchronization
 	read := func(key string) (val string) {
 		m1 := m.Load().(Map)
 		return m1[key]
 	}
+
 	// insert function can be used to update the data without further synchronization
 	insert := func(key, val string) {
 		mu.Lock() // synchronize with other potential writers

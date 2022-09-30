@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
@@ -42,7 +43,20 @@ func downloadFile(url, filename string) {
 	fmt.Println(n, err)
 }
 
+// Config contains program configuration options.
+var Config struct {
+	Url      string
+	Filename string
+}
+
+// init is called before main.
+func init() {
+	flag.StringVar(&Config.Url, "u", "", "request url")
+	flag.StringVar(&Config.Filename, "f", "tmp.jpg", "save file name")
+	flag.Parse()
+}
+
 func main() {
 	// 自动下载文件
-	downloadFile("https://user-gold-cdn.xitu.io/2019/6/30/16ba8cb6465a6418?w=826&h=782&f=png&s=279620", "filename.jpg")
+	downloadFile(Config.Url, Config.Filename)
 }

@@ -1,3 +1,4 @@
+// 基础用法
 package main
 
 import (
