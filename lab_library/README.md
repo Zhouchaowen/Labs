@@ -6,9 +6,7 @@
 - context
 - data_structure 
 - epoller
-- error
 - grpc
-- io
 - kqueue
 - logger
 - net/http
