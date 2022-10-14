@@ -4,7 +4,10 @@
 - ch_2 slice切片和数组的传递性能区别
 - ch_3 共享底层存储导致扩容时的坑
 - ch_4 slice切片自定义排序规则
-
+- ch_5 slice切片copy
+- ch_6 slice切片实现栈
+- ch_7 slice切片实现队列
+- ch_8 slice切片实现循环队列
 
 内存对齐更加背数
 
@@ -21,3 +24,5 @@ https://blog.huoding.com/2021/09/29/951
 https://xie.infoq.cn/article/594a7f54c639accb53796cfc7
 
 https://www.bilibili.com/video/BV1Ja4y1i7AF
+
+https://www.yuque.com/qyuhen/go/cmc1bu

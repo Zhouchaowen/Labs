@@ -10,6 +10,11 @@
 - ch_8 `goroutines+channel`简单服务器
 - ch_9 `goroutines+channel`菊花链过滤器过程
 - ch_10 `goroutines+channel`简易聊天室
+- ch_11 通过`channel`实现tryLock
+- ch_12
+- ch_13
+- ch_14
+
 
 # 使用
 什么时候终止?
@@ -46,3 +51,13 @@ https://github.com/lotusirous/go-concurrency-patterns
 https://github.com/kat-co/concurrency-in-go-src
 
 https://github.com/gopcp/example.v2
+
+https://learnku.com/go/t/23456/using-the-go-language-to-handle-1-million-requests-per-minute
+
+https://colobu.com/2018/03/26/channel-patterns/#Or_Channel_%E6%A8%A1%E5%BC%8F
+
+https://colobu.com/2022/09/12/go-synchronization-is-hard/
+
+https://www.cnblogs.com/jiujuan/p/16014608.html
+
+https://ustack.io/2019-10-04-Golang%E6%BC%AB%E8%B0%88%E4%B9%8Bchannel%E5%A6%99%E6%B3%95.html

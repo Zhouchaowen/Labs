@@ -5,6 +5,36 @@ import (
 	"unsafe"
 )
 
+/*
+type               size      default
+------------------ --------- ----------- --------------------------
+bool               1         false
+byte               1         0			uint8
+
+int,   uint      4 or 8      0
+int8,  uint8       1         0          -128 ~ 127, 0 ~ 255
+int16, uint16      2         0          -32768 ~ 32767, 0 ~ 65535
+int32, uint32      4         0
+int64, uint64      8         0
+
+float32            4         0.0
+float64            8         0.0
+
+complex64          8
+complex128        16
+
+rune               4         0			unicode code point, int32
+uintptr          4 or 8      0			uint
+
+string                       ""
+array
+struct
+function                     nil
+interface                    nil
+map                          nil
+slice                        nil
+channel                      nil
+*/
 func uint8Pointer() {
 	s := []uint8{1, 2, 33, 44}
 	fmt.Printf("uint8 slice pointer %p\n", s)
