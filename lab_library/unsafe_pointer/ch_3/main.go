@@ -1,3 +1,4 @@
+// https://www.yuque.com/qyuhen/go/qynkre
 package main
 
 import (
@@ -22,6 +23,19 @@ type hmap struct {
 
 	extra *mapextra // optional fields
 }
+*/
+/*
+
+   pointer              header
+
+  +-------+          +-----------+
+  |  map -|--------> |  hmap     |
+  +-------+          +-----------+
+                     |  ...      |
+                     +-----------+       +-----//-----+
+                     |  buckets -|-----> | ...    ... |   array
+                     +-----------+       +-----//-----+
+
 */
 func main() {
 	mp := make(map[string]string, 5)

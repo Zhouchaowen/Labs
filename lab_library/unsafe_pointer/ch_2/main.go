@@ -1,3 +1,4 @@
+// https://www.yuque.com/qyuhen/go/aryhgf
 package main
 
 import (
@@ -31,7 +32,25 @@ func main() {
 	fmt.Printf("arr addr uintptr: %x\n", *(*uintptr)(unsafe.Pointer(&arr))) // arr的[Data uintptr]存储的是一个地址
 	fmt.Printf("arr addr uintptr: %p\n", &arr[0])                           // string 的指针
 
+	// 每个string内存占用 16
 	fmt.Printf("arr addr[0]: %s\n", arr[0])                                                                        // string 值
 	fmt.Printf("arr addr[1]: %v\n", *(*string)(unsafe.Pointer((*(*uintptr)(unsafe.Pointer(&arr))) + uintptr(16)))) // string 值
 	fmt.Printf("arr addr[2]: %v\n", *(*string)(unsafe.Pointer((*(*uintptr)(unsafe.Pointer(&arr))) + uintptr(32)))) // string 值
 }
+
+/* slice
+1.未初始化，或 new 创建，仅分配头部内存。
+2.调用 make 则编译成 makeslice 函数或指令分配全部内存，并初始化。
+
+ 	header            array
++-----------+       +-----//-----+
+|   array  -|-----> |  ...  ...  |
++-----------+       +-----//-----+
+|   len     |
++-----------+
+|   cap     |
++-----------+
+
+|<-- new -->|
+|<-------------- make ----------->|
+*/
