@@ -19,7 +19,7 @@ func MapSlice() {
 	runtime.KeepAlive(a)
 }
 
-// Map 值类型的Value不超过128字节 GC将会忽略
+// Map 值类型的Key/Value不超过128字节 GC将会忽略
 func MapArray() {
 	a := make(map[byte][128]byte, 1e8)
 	//a := make(map[byte][16]int, 1e8)
@@ -28,6 +28,7 @@ func MapArray() {
 	//a := make(map[byte][16]int64, 1e8)
 	//a := make(map[byte][32]float32, 1e8)
 	//a := make(map[byte][16]float64, 1e8)
+	//a := make(map[byte][128]bool, 1e8)
 
 	for i := 0; i < 10; i++ {
 		start := time.Now()

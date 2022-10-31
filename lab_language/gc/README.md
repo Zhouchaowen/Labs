@@ -13,6 +13,7 @@
 - ch_4 Map类型 Gc 问题
 - ch_5 Mmap分配内存绕过Gc
 - ch_6 Map中值类型的Key/Value超过128字节后会变成指针
+- ch_7 Map的Key通过Array([32]byte)优化,绕过GC扫描
 
 ## 参考
 https://mp.weixin.qq.com/s/jGGCccMOx4s5asG2IXWNMQ

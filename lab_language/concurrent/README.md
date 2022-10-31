@@ -11,7 +11,7 @@
 - ch_9 `goroutines+channel`菊花链过滤器过程
 - ch_10 `goroutines+channel`简易聊天室
 - ch_11 通过`channel`实现tryLock
-- ch_12
+- ch_12 并发替换结构体属性导致的安全问题
 - ch_13
 - ch_14
 
