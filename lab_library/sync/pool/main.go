@@ -1,3 +1,11 @@
+// pool 的问题
+// 1.内存泄漏-比如 encoding、json 中类似的问题：将容量已经变得很大的 Buffer 再放回 Pool 中，
+// 导致内存泄漏。后来在元素放回时，增加了检查逻辑，改成放回的超过一定大小的 buffer，就直接丢弃掉，不再放到池子中。
+//
+// 2.内存浪费-要做到物尽其用，尽可能不浪费的话，我们可以将 buffer 池分成几层。
+// 首先，小于 512 byte 的元素的 buffer 占一个池子；其次，小于 1K byte 大小的元素占一个池子；
+// 再次，小于 4K byte 大小的元素占一个池子。这样分成几个池子以后，就可以根据需要，到所需大小的池子中获取 buffer 了。
+//（net/http/server.go）
 package main
 
 import (
@@ -19,7 +27,6 @@ var bufPool = sync.Pool{
 	},
 }
 
-// example 1
 func Log(w io.Writer, key, val string) {
 	b := bufPool.Get().(*bytes.Buffer)
 	b.Reset()

@@ -32,6 +32,8 @@ context作用域是请求级别，通过链式结构，将每个不同域区别�
 - cancelCtx，用来取消程序的执行树，一般用 WithCancel，WithTimeout，WithDeadline 返回的取消函数本质上都是对应了 cancelCtx。
 - timerCtx，在 cancelCtx 上包了一层，支持基于时间的 cancel。
 
+关于 Done 方法，你必须要记住的知识点就是：如果 Done 没有被 close，Err 方法返回 nil；如果 Done 被 close，Err 方法会返回 Done 被 close 的原因。
+
 ## 参考
 
 https://www.jajaldoang.com/post/golang-function-timeout-with-context/
