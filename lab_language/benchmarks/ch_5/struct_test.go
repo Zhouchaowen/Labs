@@ -1,5 +1,16 @@
+// Test the performance difference of struct passing by value vs passing by pointer
+
+// refer to:
 // https://cloud.tencent.com/developer/article/1469185
 // https://chende.ren/2021/01/06213457-012-benchmark-test.html
+
+// go test -bench=. -benchmem -memprofile memprofile.out -cpuprofile profile.out
+// go test -run none -bench . -benchtime 3s -benchmem
+
+// pkg: Labs/lab_language/benchmarks/ch_5
+// cpu: Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz
+// BenchmarkPointer-4      120547652               30.45 ns/op            0 B/op          0 allocs/op
+// BenchmarkValue-4        115684429               31.13 ns/op            0 B/op          0 allocs/op
 package ch_5
 
 import (
@@ -8,8 +19,6 @@ import (
 	"testing"
 )
 
-// go test -bench=. -benchmem -memprofile memprofile.out -cpuprofile profile.out
-// go test -run none -bench . -benchtime 3s -benchmem
 type Log struct {
 	a string
 	b string

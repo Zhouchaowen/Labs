@@ -1,13 +1,22 @@
+// Test the performance difference of slice passing by value vs passing by pointer
+
+// refer to:
 // https://cloud.tencent.com/developer/article/1469185
 // https://chende.ren/2021/01/06213457-012-benchmark-test.html
+
+// go test -bench=. -benchmem -memprofile memprofile.out -cpuprofile profile.out
+// go test -run none -bench . -benchtime 3s -benchmem
+
+// pkg: Labs/lab_language/benchmarks/ch_6
+// cpu: Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz
+// BenchmarkPointer-4      1000000000               0.4151 ns/op          0 B/op          0 allocs/op
+// BenchmarkValue-4        1000000000               0.4105 ns/op          0 B/op          0 allocs/op
 package ch_5
 
 import (
 	"testing"
 )
 
-// go test -bench=. -benchmem -memprofile memprofile.out -cpuprofile profile.out
-// go test -run none -bench . -benchtime 3s -benchmem
 type Log struct {
 	a string
 	b string
@@ -23,7 +32,7 @@ func StructValue(data []Log) {
 	_ = data
 }
 
-// BenchmarkPredictable runs the test when the branch is predictable.
+// BenchmarkPointer runs the test when the branch is predictable.
 func BenchmarkPointer(b *testing.B) {
 	data := make([]Log, 100000)
 	b.ResetTimer()
@@ -32,7 +41,7 @@ func BenchmarkPointer(b *testing.B) {
 	}
 }
 
-// BenchmarkUnpredictable runs the test when the branch is random.
+// BenchmarkValue runs the test when the branch is random.
 func BenchmarkValue(b *testing.B) {
 	data := make([]Log, 100000)
 	b.ResetTimer()

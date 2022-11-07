@@ -1,6 +1,9 @@
-// 动态构建字符串也容易造成性能问题。
-// 加法操作符拼接字符串，每次都需重新分配内存和复制数据。
-// 改进方法是预分配内存，然后一次性返回。
+// the performance gap of concat/join/buffer concatenating strings
+
+// Building strings dynamically can cause performance problems.
+// The addition operator concatenates strings, reallocating memory and copying data each time.
+// An improvement is to preallocate memory and return it all at once.
+
 // go test -bench . -benchmem -v
 
 // pkg: Labs/lab_language/benchmarks/ch_1
@@ -49,8 +52,7 @@ func buffer() bool {
 	return b.String() == S
 }
 
-// ----------------------------------
-
+// BenchmarkConcat tests the performance of using concat.
 func BenchmarkConcat(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		if !concat() {
@@ -59,6 +61,7 @@ func BenchmarkConcat(b *testing.B) {
 	}
 }
 
+// BenchmarkJoin tests the performance of using join.
 func BenchmarkJoin(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		if !join() {
@@ -67,6 +70,7 @@ func BenchmarkJoin(b *testing.B) {
 	}
 }
 
+// BenchmarkBuffer tests the performance of using buffer.
 func BenchmarkBuffer(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		if !buffer() {

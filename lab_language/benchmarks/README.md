@@ -9,4 +9,7 @@
 - ch_7 []byte与string强转和标准转换的性能差异
 
 ## 参考
+https://cloud.tencent.com/developer/article/1469185
+https://chende.ren/2021/01/06213457-012-benchmark-test.html
+https://segmentfault.com/a/1190000037679588
 https://github.com/ardanlabs/gotraining/blob/master/topics/go/testing/benchmarks

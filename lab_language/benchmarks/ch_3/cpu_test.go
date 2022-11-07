@@ -1,4 +1,7 @@
+// Tests to show the different performance based on concurrency with or without parallelism.
+
 // GOGC=off GOMAXPROCS=1 go test -bench . -benchtime 3s
+
 // Processing 500000000 numbers using 4 goroutines on 1 thread(s)
 // pkg: Labs/lab_benchmarks/ch_3
 // cpu: Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz
@@ -8,6 +11,7 @@
 // BenchmarkConcurrentAgain               8         408666952 ns/op
 
 // GOGC=off go test -bench . -benchtime 3s
+
 // Processing 500000000 numbers using 4 goroutines on 4 thread(s)
 // pkg: Labs/lab_benchmarks/ch_3
 // cpu: Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz
@@ -15,10 +19,6 @@
 // BenchmarkConcurrent-4                 14         242329434 ns/op
 // BenchmarkSequentialAgain-4             7         458199166 ns/op
 // BenchmarkConcurrentAgain-4            14         236224286 ns/op
-
-// Tests to show the different performance based on concurrency with
-// or without parallelism.
-// 测试以显示基于并发或不具有并行性的不同性能
 package main
 
 import (

@@ -1,6 +1,3 @@
-// All material is licensed under the Apache License Version 2.0, January 2004
-// http://www.apache.org/licenses/LICENSE-2.0
-
 // Package caching provides code to show why Data Oriented Design matters. How
 // data layouts matter more to performance than algorithm efficiency.
 package caching
@@ -80,7 +77,6 @@ func LinkedListTraverse() int {
 }
 
 // ColumnTraverse traverses the matrix linearly down each column.
-// 按列遍历
 func ColumnTraverse() int {
 	var ctr int
 
@@ -96,7 +92,6 @@ func ColumnTraverse() int {
 }
 
 // RowTraverse traverses the matrix linearly down each row.
-// 按行遍历
 func RowTraverse() int {
 	var ctr int
 

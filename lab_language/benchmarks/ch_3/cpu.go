@@ -11,17 +11,6 @@ import (
 	"time"
 )
 
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
-
-func main() {
-	numbers := generateList(1e7)
-
-	fmt.Println(add(numbers))
-	fmt.Println(addConcurrent(runtime.NumCPU(), numbers))
-}
-
 func generateList(totalNumbers int) []int {
 	numbers := make([]int, totalNumbers)
 	for i := 0; i < totalNumbers; i++ {
@@ -68,4 +57,15 @@ func addConcurrent(goroutines int, numbers []int) int {
 	wg.Wait()
 
 	return int(v)
+}
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+func main() {
+	numbers := generateList(1e7)
+
+	fmt.Println(add(numbers))
+	fmt.Println(addConcurrent(runtime.NumCPU(), numbers))
 }
