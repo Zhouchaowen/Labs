@@ -7,6 +7,8 @@
 - ch_5 pprof 定位coroutines消耗
 - ch_6 pprof 定位mutex消耗
 - ch_7 pprof 定位block消耗
+- ch_8
+- ch_9 golang 运行时指标可视化
 
 
 ## 参考
