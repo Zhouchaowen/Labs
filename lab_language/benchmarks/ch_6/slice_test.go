@@ -11,7 +11,7 @@
 // cpu: Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz
 // BenchmarkPointer-4      1000000000               0.4151 ns/op          0 B/op          0 allocs/op
 // BenchmarkValue-4        1000000000               0.4105 ns/op          0 B/op          0 allocs/op
-package ch_5
+package ch_6
 
 import (
 	"testing"

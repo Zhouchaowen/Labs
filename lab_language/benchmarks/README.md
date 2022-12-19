@@ -7,6 +7,7 @@
 - ch_5 struct值传递与指针传递
 - ch_6 slice值传递与指针传递
 - ch_7 []byte与string强转和标准转换的性能差异
+- ch_8 channel传递大值和传递小值的性能差异
 
 ## 参考
 https://cloud.tencent.com/developer/article/1469185

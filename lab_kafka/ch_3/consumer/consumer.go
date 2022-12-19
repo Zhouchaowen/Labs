@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
-	"sync"
-
 	"github.com/Shopify/sarama"
+	"log"
+	"strconv"
+	"sync"
+	"time"
 )
 
 // 相关配置信息
@@ -34,13 +35,16 @@ func (MyConsumerGroupHandler) Cleanup(_ sarama.ConsumerGroupSession) error { ret
 // ConsumeClaim 具体的消费逻辑
 func (h MyConsumerGroupHandler) ConsumeClaim(sess sarama.ConsumerGroupSession, claim sarama.ConsumerGroupClaim) error {
 	for msg := range claim.Messages() {
-		fmt.Printf("[consumer] name:%s topic:%q partition:%d offset:%d\n", h.name, msg.Topic, msg.Partition, msg.Offset)
+		fmt.Printf("[consumer] name:%s value:%s topic:%q partition:%d offset:%d\n", h.name, msg.Value, msg.Topic, msg.Partition, msg.Offset)
+
+		// 模拟消费失败
+		n, err := strconv.Atoi(string(msg.Value[14:16]))
+		if err != nil || n%8 == 0 {
+			return fmt.Errorf("test err")
+		}
+
 		// 标记消息已被消费 内部会更新 consumer offset
 		sess.MarkMessage(msg, "")
-		h.count++
-		if h.count%10000 == 0 {
-			fmt.Printf("name:%s 消费数:%v\n", h.name, h.count)
-		}
 	}
 	return nil
 }
@@ -48,6 +52,7 @@ func (h MyConsumerGroupHandler) ConsumeClaim(sess sarama.ConsumerGroupSession, c
 func ConsumerGroup(topic, group, name string) {
 	config := sarama.NewConfig()
 	config.Consumer.Return.Errors = true
+	config.Consumer.Offsets.Initial = sarama.OffsetOldest
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
@@ -76,6 +81,7 @@ func ConsumerGroup(topic, group, name string) {
 			if err != nil {
 				log.Println("Consume err: ", err)
 			}
+			<-time.After(2 * time.Second)
 			// 如果 context 被 cancel 了，那么退出
 			if ctx.Err() != nil {
 				return
