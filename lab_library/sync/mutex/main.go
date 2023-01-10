@@ -5,6 +5,10 @@ import (
 	"sync"
 )
 
+/*
+	安全读写
+*/
+
 func UnSafeAdd() {
 	var count = 0
 	var wg sync.WaitGroup

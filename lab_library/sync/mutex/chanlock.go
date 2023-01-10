@@ -1,5 +1,9 @@
 package main
 
+/*
+	通过channel实现Lock,Unlock,TryLock
+*/
+
 type ChanMutex chan struct{}
 
 func (m *ChanMutex) Lock() {

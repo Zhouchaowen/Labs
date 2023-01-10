@@ -6,6 +6,10 @@ import (
 	"sync/atomic"
 )
 
+/*
+	通过atomic实现Lock,Unlock,TryLock
+*/
+
 type spinLock uint32
 
 func (sl *spinLock) Lock() {
