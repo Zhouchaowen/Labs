@@ -4,6 +4,7 @@
 - ch_2 并行测试
 - ch_3 竞争检查
 - ch_4 代码覆盖率
+- ch_5 http测试
 
 ## 基础命令
 ```bash
@@ -13,7 +14,7 @@ zcw% go test -H
   -test.benchmem     [-benchmem]
         打印基准测试的内存分配 print memory allocations for benchmarks
   -test.benchtime d  [-benchtime 10]
-        运行每个基准测试，持续时间为d(默认为1秒) run each benchmark for duration d (default 1s)
+        运行每个基准测试、持续时间为d(默认为1秒) run each benchmark for duration d (default 1s)
   -test.blockprofile file
         将goroutine阻塞配置文件写入文件 write a goroutine blocking profile to file
   -test.blockprofilerate rate
@@ -29,7 +30,7 @@ zcw% go test -H
   -test.failfast
         在第一次测试失败后不开始新的测试 do not start new tests after the first test failure
   -test.list regexp
-        列出符合regexp的测试、示例和基准测试，然后退出 list tests, examples, and benchmarks matching regexp then exit
+        列出符合regexp的测试、示例和基准测试、然后退出 list tests, examples, and benchmarks matching regexp then exit
   -test.memprofile file
         将分配配置文件写入文件 write an allocation profile to file
   -test.memprofilerate rate
@@ -37,7 +38,7 @@ zcw% go test -H
   -test.mutexprofile string
         执行后将互斥锁争用配置文件写入命名文件 write a mutex contention profile to the named file after execution
   -test.mutexprofilefraction int
-        如果>= 0，调用runtime.SetMutexProfileFraction()(默认为1) if >= 0, calls runtime.SetMutexProfileFraction() (default 1)
+        如果>= 0、调用runtime.SetMutexProfileFraction()(默认为1) if >= 0, calls runtime.SetMutexProfileFraction() (default 1)
   -test.outputdir dir
         将配置文件写入目录 write profiles to dir
   -test.paniconexit0
@@ -53,7 +54,7 @@ zcw% go test -H
   -test.testlogfile file
         write test action log to file (for use only by cmd/go)
   -test.timeout d
-        持续时间d(默认为0，禁用超时)后的恐慌测试二进制文件 panic test binary after duration d (default 0, timeout disabled)
+        持续时间d(默认为0、禁用超时)后的恐慌测试二进制文件 panic test binary after duration d (default 0, timeout disabled)
   -test.trace file
         将执行跟踪写入文件 write an execution trace to file
   -test.v
