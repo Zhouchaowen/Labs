@@ -60,9 +60,9 @@ func LockMap() {
 			case <-ctx.Done():
 				return
 			default:
-				mu.RLock()
+				mu.Lock()
 				a.Mp["1"] += 1
-				mu.RUnlock()
+				mu.Unlock()
 			}
 		}
 	}()
@@ -82,5 +82,5 @@ func LockMap() {
 
 func main() {
 	UnLockMap()
-	//LockMap()
+	LockMap()
 }

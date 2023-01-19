@@ -5,6 +5,7 @@ import (
 	"reflect"
 )
 
+// 利用reflect切片select-case的确定数量限制
 func createCases(chs ...chan int) []reflect.SelectCase {
 	var cases []reflect.SelectCase
 
@@ -46,5 +47,5 @@ func fun1() {
 }
 
 func main() {
-
+	fun1()
 }
