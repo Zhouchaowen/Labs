@@ -1,6 +1,6 @@
 module Labs
 
-go 1.17
+go 1.18
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.1
@@ -8,6 +8,9 @@ require (
 	github.com/VictoriaMetrics/fastcache v1.10.0
 	github.com/allegro/bigcache/v3 v3.0.2
 	github.com/arl/statsviz v0.5.1
+	github.com/asavie/xdp v0.3.3
+	github.com/asmcos/requests v0.0.0-20210319030608-c839e8ae4946
+	github.com/chromedp/chromedp v0.8.7
 	github.com/coocood/freecache v1.2.1
 	github.com/davecgh/go-spew v1.1.1
 	github.com/envoyproxy/protoc-gen-validate v0.6.7
@@ -26,6 +29,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.2
 	github.com/lib/pq v1.10.6
+	github.com/miekg/dns v1.1.43
 	github.com/nsqio/go-nsq v1.1.0
 	github.com/orcaman/concurrent-map v1.0.0
 	github.com/panjf2000/ants v1.3.0
@@ -34,13 +38,14 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/viper v1.12.0
 	github.com/stretchr/testify v1.7.1
+	github.com/vishvananda/netlink v1.1.0
 	go-micro.dev/v4 v4.8.1
 	go.etcd.io/etcd/client/v3 v3.5.4
 	go.uber.org/goleak v1.1.11
 	go.uber.org/ratelimit v0.2.0
 	go.uber.org/zap v1.21.0
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
-	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
+	golang.org/x/sys v0.0.0-20220928140112-f11e5e49a4ec
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
 	google.golang.org/genproto v0.0.0-20220525015930-6ca3db687a9d
 	google.golang.org/grpc v1.46.2
@@ -64,6 +69,9 @@ require (
 	github.com/antchfx/xpath v1.1.8 // indirect
 	github.com/bitly/go-simplejson v0.5.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
+	github.com/chromedp/cdproto v0.0.0-20230109101555-6b041c6303cc // indirect
+	github.com/chromedp/sysutil v1.0.0 // indirect
+	github.com/cilium/ebpf v0.4.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
@@ -79,6 +87,9 @@ require (
 	github.com/go-logfmt/logfmt v0.5.0 // indirect
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/gobwas/httphead v0.1.0 // indirect
+	github.com/gobwas/pool v0.2.1 // indirect
+	github.com/gobwas/ws v1.1.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/snappy v0.0.4 // indirect
@@ -106,14 +117,15 @@ require (
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
+	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kennygrant/sanitize v1.2.4 // indirect
 	github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351 // indirect
 	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
+	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
-	github.com/miekg/dns v1.1.43 // indirect
 	github.com/minio/highwayhash v1.0.2 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
@@ -144,6 +156,7 @@ require (
 	github.com/temoto/robotstxt v1.1.1 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	github.com/urfave/cli/v2 v2.3.0 // indirect
+	github.com/vishvananda/netns v0.0.0-20191106174202-0a2b9b5464df // indirect
 	github.com/xanzy/ssh-agent v0.3.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.4 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.4 // indirect
