@@ -1,0 +1,12 @@
+syntax = "proto3";
+option go_package = "./pb";
+package pb;
+
+message Login {
+  string Account = 1;
+  string Password = 2;
+}
+
+message LoginAck {
+  string Token = 1;
+}

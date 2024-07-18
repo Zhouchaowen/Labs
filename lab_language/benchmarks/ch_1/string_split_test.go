@@ -1,9 +1,3 @@
-// the performance gap of concat/join/buffer concatenating strings
-
-// Building strings dynamically can cause performance problems.
-// The addition operator concatenates strings, reallocating memory and copying data each time.
-// An improvement is to preallocate memory and return it all at once.
-
 // go test -bench . -benchmem -v
 
 // pkg: Labs/lab_language/benchmarks/ch_1

@@ -6,14 +6,14 @@ import (
 	"unsafe"
 )
 
-/**
-[] 24个字节
-[3]byte 3个字节
-[3]int32 12个字节
-*  8 个字节
-string 16个人字节
-interface 16个人字节
-func 8 个字节
+/*
+	[] 24个字节
+	[3]byte 3个字节
+	[3]int32 12个字节
+	*  8 个字节
+	string 16个人字节
+	interface 16个人字节
+	func 8 个字节
 */
 
 func StructInt() {

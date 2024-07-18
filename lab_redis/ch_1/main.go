@@ -6,6 +6,10 @@ import (
 	"github.com/go-redis/redis/v9"
 )
 
+/*
+1.设置key-value到redis
+2.通过key获取value
+*/
 func main() {
 	ctx := context.Background()
 

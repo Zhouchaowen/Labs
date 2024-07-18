@@ -1,5 +1,3 @@
-// Sprint/Sprintf performance gap
-
 // go test -run none -bench . -benchtime 3s -benchmem
 
 // pkg: Labs/lab_benchmarks/ch_1

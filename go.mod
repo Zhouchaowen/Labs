@@ -28,6 +28,7 @@ require (
 	github.com/google/gopacket v1.1.19
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.2
+	github.com/jszwec/csvutil v1.8.0
 	github.com/lib/pq v1.10.6
 	github.com/miekg/dns v1.1.43
 	github.com/nsqio/go-nsq v1.1.0

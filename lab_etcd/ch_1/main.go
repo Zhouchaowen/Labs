@@ -14,7 +14,7 @@ var HOST = "10.2.0.104"
 // PUT/GET 基础操作
 func main() {
 	cli, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{HOST + ":2379"}, //如果是集群，就在后面机上所有的节点[]string{"localhost:2379", "localhost:22379", "localhost:32379"},
+		Endpoints:   []string{HOST + ":2379"}, //如果是集群，就在后面加上所有的节点[]string{"localhost:2379", "localhost:22379", "localhost:32379"},
 		DialTimeout: 5 * time.Second,
 	})
 	if err != nil {
@@ -23,7 +23,7 @@ func main() {
 	fmt.Println("connect to etcd success.")
 	defer cli.Close()
 
-	// put值
+	// put值,超时上下文
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	_, err = cli.Put(ctx, "address", "北京市")
 	cancel()
